@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    //function on profile button click
+    /*function on profile button click*/
     const profileButton = document.querySelector("nav .profile");
     profileButton.addEventListener("click", function () {
         document.querySelector("#profile .fixed-container").style.display = ("flex");
