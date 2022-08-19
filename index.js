@@ -1420,6 +1420,22 @@ function changeBanner() {
         banner.setAttribute("src", bannerImages[currentBanner]);
         currentBanner++;
     }, 5000);
+    
+    const Prev = document.querySelector("aside .prev");
+    const Next = document.querySelector("aside .next");
+    Next.addEventListener("click", function () {
+        currentBanner++;
+        if (currentBanner >= bannerImages.length) { currentBanner = 0 };
+
+        banner.setAttribute("src", bannerImages[currentBanner]);
+    });
+
+    Prev.addEventListener("click", function () {
+        currentBanner--;
+        if (currentBanner < 0) { currentBanner = bannerImages.length - 1 };
+
+        banner.setAttribute("src", bannerImages[currentBanner]);
+    });
 };
 
 //function to remove single product
