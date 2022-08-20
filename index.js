@@ -132,7 +132,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
     //function for menu button for responsive nav
     const Menubutton = document.querySelector("nav .menu-button");
-    Menubutton.addEventListener("click", function(){
+    Menubutton.addEventListener("click", function () {
         const Nav = document.querySelector("nav");
         Nav.classList.toggle("active");
     });
@@ -1412,7 +1412,6 @@ function changeBanner() {
     const banner = document.querySelector("aside img");
     const Prev = document.querySelector("aside .prev");
     const Next = document.querySelector("aside .next");
-    const Dots = document.querySelectorAll(".dots span");
 
     const bannerImages = ["https://www.bycomercial.com/wp-content/uploads/2020/07/posts-Byc-115.jpg",
         "https://i02.appmifile.com/642_operator_in/29/07/2022/7034a9b84057fd1cc907d879f3480a03.jpg",
@@ -1424,6 +1423,11 @@ function changeBanner() {
         "https://www.bata.in/on/demandware.static/-/Sites-bata-in-Library/default/dw1629dece/Plp/Bata-EOSS-PLPBanner_Generic-June22-2250x500px.jpg",
         "https://newsolez.com/wp-content/uploads/2018/02/be982d86c62674978f5eea66aba3ba57.jpg",
         "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Collection-Banner_346efdc6-82b3-4370-87b9-e018fe298c09_2000x.jpg?v=1658677055"];
+
+    for (let i = 0; i < bannerImages.length; i++) {
+        document.querySelector("aside .dots").innerHTML += `<span></span>`;
+        var Dots = document.querySelectorAll(".dots span");
+    }
 
     setInterval(function () {
         if (currentBanner >= bannerImages.length) { currentBanner = 0 };
@@ -1451,7 +1455,7 @@ function changeBanner() {
     };
 
     changeBannerDot();
-    
+
     function changeBannerDot() {
         Dots.forEach(function (dot) {
             dot.style.width = "15px";
