@@ -1402,40 +1402,59 @@ function Alert(message) {
 //fuction to change banner
 var currentBanner = 0;
 function changeBanner() {
-    banner = document.querySelector("aside img");
-    bannerImages = ["https://www.bycomercial.com/wp-content/uploads/2020/07/posts-Byc-115.jpg",
-                    "https://i02.appmifile.com/642_operator_in/29/07/2022/7034a9b84057fd1cc907d879f3480a03.jpg",
-                    "https://images.samsung.com/is/image/samsung/assets/in/offer/online/samsung-fest/b2c-flagship-1920x545-240722.jpg",
-                    "https://image01.realme.net/general/20220729/1659097859557.jpg.webp",
-                    "https://in.jbl.com/on/demandware.static/-/Sites-JB-INDIA-Library/default/dwce817290/home-hero-carousel/000_Gaming_08July_22_Des.jpg",
-                    "https://www.casio.com/content/casio/locales/in/en/products/_jcr_content/root/responsivegrid/image_1970305012_cop.casiocoreimg.jpeg/1650332429311/hero-pc.jpeg",
-                    "https://www.asus.com/WebsitesBanner/IN/banners/rijbo5tzw5h7h8as/rijbo5tzw5h7h8as-0_0_desktop_0_1X.jpg?webp",
-                    "https://www.bata.in/on/demandware.static/-/Sites-bata-in-Library/default/dw1629dece/Plp/Bata-EOSS-PLPBanner_Generic-June22-2250x500px.jpg",
-                    "https://newsolez.com/wp-content/uploads/2018/02/be982d86c62674978f5eea66aba3ba57.jpg",
-                    "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Collection-Banner_346efdc6-82b3-4370-87b9-e018fe298c09_2000x.jpg?v=1658677055"];
+    const banner = document.querySelector("aside img");
+    const Prev = document.querySelector("aside .prev");
+    const Next = document.querySelector("aside .next");
+    const Dots = document.querySelectorAll(".dots span");
+
+    const bannerImages = ["https://www.bycomercial.com/wp-content/uploads/2020/07/posts-Byc-115.jpg",
+        "https://i02.appmifile.com/642_operator_in/29/07/2022/7034a9b84057fd1cc907d879f3480a03.jpg",
+        "https://images.samsung.com/is/image/samsung/assets/in/offer/online/samsung-fest/b2c-flagship-1920x545-240722.jpg",
+        "https://image01.realme.net/general/20220729/1659097859557.jpg.webp",
+        "https://in.jbl.com/on/demandware.static/-/Sites-JB-INDIA-Library/default/dwce817290/home-hero-carousel/000_Gaming_08July_22_Des.jpg",
+        "https://www.casio.com/content/casio/locales/in/en/products/_jcr_content/root/responsivegrid/image_1970305012_cop.casiocoreimg.jpeg/1650332429311/hero-pc.jpeg",
+        "https://www.asus.com/WebsitesBanner/IN/banners/rijbo5tzw5h7h8as/rijbo5tzw5h7h8as-0_0_desktop_0_1X.jpg?webp",
+        "https://www.bata.in/on/demandware.static/-/Sites-bata-in-Library/default/dw1629dece/Plp/Bata-EOSS-PLPBanner_Generic-June22-2250x500px.jpg",
+        "https://newsolez.com/wp-content/uploads/2018/02/be982d86c62674978f5eea66aba3ba57.jpg",
+        "https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Collection-Banner_346efdc6-82b3-4370-87b9-e018fe298c09_2000x.jpg?v=1658677055"];
 
     setInterval(function () {
         if (currentBanner >= bannerImages.length) { currentBanner = 0 };
-
-        banner.setAttribute("src", bannerImages[currentBanner]);
+        changeBannerDot();
         currentBanner++;
     }, 5000);
-    
-    const Prev = document.querySelector("aside .prev");
-    const Next = document.querySelector("aside .next");
+
     Next.addEventListener("click", function () {
         currentBanner++;
         if (currentBanner >= bannerImages.length) { currentBanner = 0 };
-
-        banner.setAttribute("src", bannerImages[currentBanner]);
+        changeBannerDot();
     });
 
     Prev.addEventListener("click", function () {
         currentBanner--;
         if (currentBanner < 0) { currentBanner = bannerImages.length - 1 };
+        changeBannerDot();
+    });
+
+    for (let currentDot = 0; currentDot < Dots.length; currentDot++) {
+        Dots[currentDot].addEventListener("click", function () {
+            currentBanner = currentDot;
+            changeBannerDot();
+        });
+    };
+
+    changeBannerDot();
+    
+    function changeBannerDot() {
+        Dots.forEach(function (dot) {
+            dot.style.width = "15px";
+            dot.style.background = "#37beb0";
+        });
 
         banner.setAttribute("src", bannerImages[currentBanner]);
-    });
+        Dots[currentBanner].style.width = "30px";
+        Dots[currentBanner].style.background = "#fff";
+    };
 };
 
 //function to remove single product
