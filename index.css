@@ -12,7 +12,6 @@ nav {
     top: 0;
     z-index: 9;
     height: 75px;
-    padding: 0 24px;
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, .3);
     background: #fff;
     display: flex;
@@ -21,6 +20,7 @@ nav {
 
 nav .logo {
     height: 40px;
+    width: 150px;
     margin: auto 0;
 }
 
@@ -75,7 +75,8 @@ nav button p {
 
 
 .fixed-container,
-.alert {
+.alert,
+.menu-button {
     display: none;
 }
 
@@ -471,4 +472,26 @@ input[type="reset"] {
     padding: 14px 28px;
     margin: 15px auto;
     background-color: #37beb0;
+}
+
+@media only screen and (max-width: 645px) {
+    nav>div {
+        display: none;
+    }
+
+    nav .menu-button {
+        display: block;
+    }
+
+    nav.active {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        padding: 24px;
+    }
+
+    nav.active>div {
+        display: flex;
+        flex-direction: column;
+    }
 }

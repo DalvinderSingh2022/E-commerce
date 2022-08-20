@@ -130,6 +130,13 @@ window.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    //function for menu button for responsive nav
+    const Menubutton = document.querySelector("nav .menu-button");
+    Menubutton.addEventListener("click", function(){
+        const Nav = document.querySelector("nav");
+        Nav.classList.toggle("active");
+    });
+
     changeBanner();
 
     productCreator(document.querySelectorAll("#mobile .product-container"), Mobile);
